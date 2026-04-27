@@ -1,0 +1,23 @@
+{
+  "name": "Valkey Bundle",
+  "description": "Official Valkey Bundle Docker image with all modules (JSON, Bloom, Search, LDAP) and auto-generated password",
+  "tags": ["database", "cache", "valkey", "valkey-bundle"],
+  "variables": {
+    "VALKEYPASSWORD": {
+      "description": "Auto-generated secure password for Valkey",
+      "default": "${{RAILWAY_CRYPTO_RANDOM_32}}"
+    },
+    "VALKEYHOST": {
+      "description": "Valkey host (auto-populated by Railway)",
+      "default": "${{RAILWAY_TCP_PROXY_DOMAIN}}"
+    },
+    "VALKEYPORT": {
+      "description": "Valkey port (auto-populated by Railway)",
+      "default": "${{RAILWAY_TCP_PROXY_PORT}}"
+    },
+    "VALKEYUSER": {
+      "description": "Valkey username",
+      "default": "default"
+    }
+  }
+}

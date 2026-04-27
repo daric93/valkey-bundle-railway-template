@@ -1,0 +1,29 @@
+[build]
+builder = "dockerfile"
+
+[environments.production]
+
+[[environments.production.services]]
+name = "valkey-bundle"
+
+[environments.production.services.valkey-bundle]
+[environments.production.services.valkey-bundle.variables]
+# Auto-generated secure variables
+VALKEYPASSWORD = "${{RAILWAY_CRYPTO_RANDOM_32}}"
+VALKEYHOST = "${{RAILWAY_TCP_PROXY_DOMAIN}}"
+VALKEYPORT = "${{RAILWAY_TCP_PROXY_PORT}}"
+VALKEYUSER = "default"
+VALKEY_URL = "valkey://default:${{RAILWAY_CRYPTO_RANDOM_32}}@${{RAILWAY_TCP_PROXY_DOMAIN}}:${{RAILWAY_TCP_PROXY_PORT}}"
+
+# Internal Valkey config
+PORT = "6379"
+VALKEY_PASSWORD = "${{RAILWAY_CRYPTO_RANDOM_32}}"
+
+# Add these labels to identify as Valkey
+[environments.production.services.valkey-bundle.labels]
+"railway.service.type" = "valkey"
+"railway.database.type" = "valkey"
+
+[[environments.production.services.valkey-bundle.ports]]
+port = 6379
+protocol = "TCP"
